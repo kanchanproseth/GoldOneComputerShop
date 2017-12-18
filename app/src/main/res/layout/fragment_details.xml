@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kanchanproseth.goldonecomputershop.controller.DetailsActivity"
+    android:background="@drawable/background_color">
 
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:src="@drawable/logo" />
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:text="Business Hours: 8AM – 5.30PM (Monday to Sunday)"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:text="Call Center"
+                />
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="Laptop and Brand Desktop: 098 909 877
+Gaming and PC Component: 093 909 879
+Accessory and Other: 093 909 555
+General Information: 023 6666 088"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:text="Gold One Computer (Kampucha Krom)"
+                />
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="Address: No. 405-407Eo, Kampuchea Krom Blvd., SangatPhsar Depor 3, Khan Toul Kok, Phnom Penh 12155
+Sales: 012 909 878 | 087 909 878
+Service: 077 789 002Business Hours: 8AM – 5.30PM (Monday to Sunday)"
+                />
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="Gold One Electronic (Olympic)"
+                />
+            <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:text="Address: No. 3BEo, Street No. 163, Sangkat Olympic,Khan Chamkarmon, Phnom Penh 12312
+Sales and Support: 017 909 879 | 086 909 879
+Email: sales@goldonecomputer.com
+For corporate inquiry, please contact:
+Purchase Manager: gm@goldonecomputer.com
+" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:text="Google Map"/>
+
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/map"
+                android:layout_margin="10dp"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                 />
+
+
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+
+
+
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

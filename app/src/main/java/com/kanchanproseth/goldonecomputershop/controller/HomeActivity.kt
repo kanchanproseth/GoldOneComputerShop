@@ -11,6 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.kanchanproseth.goldonecomputershop.Helper.CustomViewPager
 import com.kanchanproseth.goldonecomputershop.Helper.PageFragment
 import com.kanchanproseth.goldonecomputershop.R
@@ -22,8 +25,14 @@ import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.custom_tab.view.*
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+
 
 class HomeActivity : AppCompatActivity() {
+
+
     private var mTabLayout: TabLayout? = null
 
     private val mTabsIcons = intArrayOf(R.drawable.ic_recents_selector, R.drawable.ic_favorite_selector, R.drawable.ic_place_selector)
@@ -31,6 +40,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+
 
         // Setup the viewPager
         val viewPager = view_pager as CustomViewPager
@@ -56,6 +67,8 @@ class HomeActivity : AppCompatActivity() {
 
 
         }
+
+
 
     }
 
