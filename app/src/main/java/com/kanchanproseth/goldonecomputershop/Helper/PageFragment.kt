@@ -1,7 +1,6 @@
 package com.kanchanproseth.goldonecomputershop.Helper
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -9,16 +8,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
 import com.google.gson.GsonBuilder
 import com.kanchanproseth.goldonecomputershop.R
 import com.kanchanproseth.goldonecomputershop.adapter.HomeAdapter
-import com.kanchanproseth.goldonecomputershop.model.MyData
 import com.kanchanproseth.goldonecomputershop.service.AllProductByCategory
-import com.kanchanproseth.goldonecomputershop.util.AppBuilder
-import io.realm.Realm
 import io.realm.RealmObject
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import retrofit.GsonConverterFactory
@@ -26,18 +21,14 @@ import retrofit.Retrofit
 import retrofit.RxJavaCallAdapterFactory
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
-import android.webkit.WebSettings
 import android.webkit.WebView
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_details.*
-import kotlinx.android.synthetic.main.activity_details.view.*
+import com.kanchanproseth.goldonecomputershop.adapter.BlogAdapter
+import com.kanchanproseth.goldonecomputershop.service.Blogservice
+
 import kotlinx.android.synthetic.main.fragment_blogs.view.*
-import kotlinx.android.synthetic.main.fragment_details.*
-import kotlinx.android.synthetic.main.fragment_details.view.*
-import kotlin.math.floor
 
 
 /**
@@ -47,8 +38,7 @@ class PageFragment : Fragment() {
 
     private var mPageNo: Int = 0
     private var mWebView: WebView? = null
-    var mMapView:MapView? = null
-    var map:GoogleMap? = null
+
 
 
 
@@ -110,18 +100,39 @@ class PageFragment : Fragment() {
 
         }else if (mPageNo == 2){
             view = inflater!!.inflate(R.layout.fragment_blogs, container, false)
+            view!!.blog_rc!!.setHasFixedSize(true)
+            // use a linear layout manager
+            val mLayoutManager = LinearLayoutManager(view.context)
+            view!!.blog_rc!!.layoutManager = mLayoutManager
 
-            mWebView = view!!.webview
-            val webSettings = mWebView!!.settings
-            webSettings.javaScriptEnabled = true
+            val gson = GsonBuilder().setExclusionStrategies(object : ExclusionStrategy {
+                override fun shouldSkipField(f: FieldAttributes?): Boolean {
+                    return  f!!.declaringClass == RealmObject::class.java
+                }
 
-            mWebView!!.loadUrl("http://www.goldonecomputer.com/index.php?route=blog/blog")
+                override fun shouldSkipClass(clazz: Class<*>?): Boolean {
+                    return  false
+                }
+            }).create()
+
+            val retrofit = Retrofit.Builder().
+                    addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson!!))
+                    .baseUrl("http://10.0.2.2:5000").build()
+
+            val blogService: Blogservice = retrofit!!.create(Blogservice::class.java)
+            blogService.getAllBlogs().subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe({ result ->
+                        var mAdapter = BlogAdapter(view!!.context, result)
+                        view!!.blog_rc.adapter = mAdapter
+
+                        },{error -> Log.e("Error", error.message)})
 
 
         }else if (mPageNo == 3){
             view = inflater!!.inflate(R.layout.fragment_details, container, false)
 
-//            var mapFragment : SupportMapFragment? = null
             val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
             mapFragment?.getMapAsync { googleMap ->
 
@@ -150,7 +161,6 @@ class PageFragment : Fragment() {
 
     companion object {
         val ARG_PAGE = "ARG_PAGE"
-        var results: MyData? = null
 
         fun newInstance(pageNo: Int): PageFragment {
 

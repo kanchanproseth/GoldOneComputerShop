@@ -4,10 +4,10 @@ import com.google.gson.ExclusionStrategy
 import com.google.gson.FieldAttributes
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import io.realm.RealmObject
-import retrofit.GsonConverterFactory
-import retrofit.Retrofit
 import retrofit.RxJavaCallAdapterFactory
+import io.realm.RealmObject
+import retrofit.Retrofit
+import retrofit.GsonConverterFactory
 
 /**
  * Created by kanchanproseth on 11/6/17.

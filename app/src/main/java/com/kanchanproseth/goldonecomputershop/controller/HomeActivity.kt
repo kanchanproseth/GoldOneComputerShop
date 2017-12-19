@@ -6,28 +6,15 @@ import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
 import com.kanchanproseth.goldonecomputershop.Helper.CustomViewPager
 import com.kanchanproseth.goldonecomputershop.Helper.PageFragment
 import com.kanchanproseth.goldonecomputershop.R
-import com.kanchanproseth.goldonecomputershop.model.MyData
-import com.kanchanproseth.goldonecomputershop.service.AllProductByCategory
-import com.kanchanproseth.goldonecomputershop.util.AppBuilder
-import io.realm.Realm
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.custom_tab.view.*
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 
 
 class HomeActivity : AppCompatActivity() {
