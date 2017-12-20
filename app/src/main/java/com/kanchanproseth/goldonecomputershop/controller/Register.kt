@@ -1,8 +1,8 @@
 package com.kanchanproseth.goldonecomputershop.controller
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
 import com.kanchanproseth.goldonecomputershop.R
@@ -18,6 +18,7 @@ class Register : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        supportActionBar!!.hide()
         setContentView(R.layout.activity_register)
         app.runConfigure()
         val username = registerUsername.text

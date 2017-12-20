@@ -1,6 +1,7 @@
 package com.kanchanproseth.goldonecomputershop.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.kanchanproseth.goldonecomputershop.R
+import com.kanchanproseth.goldonecomputershop.controller.BlogDetailsActivity
 import com.kanchanproseth.goldonecomputershop.model.BlogModel
 import kotlinx.android.synthetic.main.blog_card_view.view.*
 
@@ -60,6 +62,11 @@ class BlogAdapter(internal var mContext: Context, data: BlogModel) : RecyclerVie
 
         holder.posted_date.text = result[listPosition].posted_date + " | " + result[listPosition].Author
         holder.desc.text = result[listPosition].short_desc
+        holder.itemView.setOnClickListener {
+            val intent = Intent(mContext, BlogDetailsActivity::class.java)
+
+            mContext.startActivity(intent)
+        }
 
     }
 

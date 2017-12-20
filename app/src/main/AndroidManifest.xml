@@ -18,23 +18,30 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
-         <activity android:name=".controller.MainActivity">
-         <intent-filter>
-         <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".controller.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-         <category android:name="android.intent.category.LAUNCHER" />
-         </intent-filter>
-         </activity>
-        <activity android:name=".controller.HomeActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".controller.Register"></activity>
+        <activity android:name=".controller.HomeActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".controller.Register" />
+        <activity android:name=".controller.SeeMoreActivity" />
+        <activity android:name=".controller.BlogDetailsActivity" />
+        <activity android:name=".controller.ProductByModelActivity"></activity>
     </application>
 
 </manifest>

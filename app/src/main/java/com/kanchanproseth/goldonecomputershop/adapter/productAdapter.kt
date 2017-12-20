@@ -1,16 +1,16 @@
 package com.kanchanproseth.goldonecomputershop.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.CardView
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.kanchanproseth.goldonecomputershop.R
+import com.kanchanproseth.goldonecomputershop.controller.ProductByModelActivity
 import com.kanchanproseth.goldonecomputershop.model.MyData
 import kotlinx.android.synthetic.main.product_cardview.view.*
 
@@ -37,7 +37,7 @@ class productAdapter(internal var mContext: Context, data: MyData.Categories) : 
 
 
     init {
-        this.response = data!!
+        this.response = data
         print(response!!.asset.size)
     }
 
@@ -52,18 +52,16 @@ class productAdapter(internal var mContext: Context, data: MyData.Categories) : 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, listPosition: Int) {
 
-
-        val list_asset = response!!.asset[listPosition]
-        (holder as ProductCardViewHolder).product_name.text = list_asset!!.asset_model
-        print(list_asset!!.asset_model)
-
-
-
-
-
-
-
-
+        if (listPosition <= 10) {
+            val list_asset = response!!.asset[listPosition]
+            (holder as ProductCardViewHolder).product_name.text = list_asset!!.asset_model
+            holder.itemView.setOnClickListener {
+                val intent = Intent(mContext, ProductByModelActivity::class.java)
+                intent.putExtra("listPosition", listPosition)
+                mContext.startActivity(intent)
+            }
+            print(list_asset.asset_model)
+        }
     }
 
     override fun getItemCount(): Int {
