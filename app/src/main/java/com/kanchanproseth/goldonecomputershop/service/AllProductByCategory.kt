@@ -9,6 +9,6 @@ import retrofit.http.Headers
  */
 interface AllProductByCategory {
     @Headers("Content-Type: application/json")
-    @GET("/Product")
+    @GET("/products")
     fun getAllProductByCategory(): rx.Observable<MyData>
 }

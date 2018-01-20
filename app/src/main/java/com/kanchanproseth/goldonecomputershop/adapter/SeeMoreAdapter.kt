@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.kanchanproseth.goldonecomputershop.R
 import com.kanchanproseth.goldonecomputershop.model.MyData
 import kotlinx.android.synthetic.main.product_cardview.view.*
@@ -39,7 +41,14 @@ class SeeMoreAdapter(context: Context, mData: List<MyData.Asset>) : BaseAdapter(
 
         var inflator = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         var seeMore = inflator.inflate(R.layout.product_cardview, null)
+        var imageuri = "http://10.0.2.2:80/GoldOneProductAPI/" + this.data!![position].list_product[0].image_uri
         seeMore.short_desc.text = asset.asset_model
+        Glide.with(context)
+                .load(imageuri)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.placeholder)
+                .centerCrop()
+                .into(seeMore.image_product)
 
 
         return seeMore

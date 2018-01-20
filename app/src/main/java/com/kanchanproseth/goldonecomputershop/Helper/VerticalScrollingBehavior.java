@@ -33,15 +33,6 @@ public abstract class VerticalScrollingBehavior<V extends View> extends Coordina
         super();
     }
 
-    @Retention(RetentionPolicy.SOURCE)
-    @IntDef({ScrollDirection.SCROLL_DIRECTION_UP, ScrollDirection.SCROLL_DIRECTION_DOWN})
-    public @interface ScrollDirection {
-        int SCROLL_DIRECTION_UP = 1;
-        int SCROLL_DIRECTION_DOWN = -1;
-        int SCROLL_NONE = 0;
-    }
-
-
     /*
        @return Overscroll direction: SCROLL_DIRECTION_UP, CROLL_DIRECTION_DOWN, SCROLL_NONE
    */
@@ -49,7 +40,6 @@ public abstract class VerticalScrollingBehavior<V extends View> extends Coordina
     public int getOverScrollDirection() {
         return mOverScrollDirection;
     }
-
 
     /**
      * @return Scroll direction: SCROLL_DIRECTION_UP, SCROLL_DIRECTION_DOWN, SCROLL_NONE
@@ -59,7 +49,6 @@ public abstract class VerticalScrollingBehavior<V extends View> extends Coordina
     public int getScrollDirection() {
         return mScrollDirection;
     }
-
 
     /**
      * @param coordinatorLayout
@@ -118,7 +107,6 @@ public abstract class VerticalScrollingBehavior<V extends View> extends Coordina
         onDirectionNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed, mScrollDirection);
     }
 
-
     @Override
     public boolean onNestedFling(CoordinatorLayout coordinatorLayout, V child, View target, float velocityX, float velocityY, boolean consumed) {
         super.onNestedFling(coordinatorLayout, child, target, velocityX, velocityY, consumed);
@@ -143,6 +131,14 @@ public abstract class VerticalScrollingBehavior<V extends View> extends Coordina
     @Override
     public Parcelable onSaveInstanceState(CoordinatorLayout parent, V child) {
         return super.onSaveInstanceState(parent, child);
+    }
+
+    @Retention(RetentionPolicy.SOURCE)
+    @IntDef({ScrollDirection.SCROLL_DIRECTION_UP, ScrollDirection.SCROLL_DIRECTION_DOWN})
+    public @interface ScrollDirection {
+        int SCROLL_DIRECTION_UP = 1;
+        int SCROLL_DIRECTION_DOWN = -1;
+        int SCROLL_NONE = 0;
     }
 
 }

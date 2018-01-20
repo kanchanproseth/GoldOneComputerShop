@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         val passwordTextfield = signInPassword.text
 
 
+
         signInButton.setOnClickListener {
             if(usernameTextField.isEmpty()){
                 Toast.makeText(this, "Please Enter Username", Toast.LENGTH_SHORT).show()
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
             }else{
                 signin(username = usernameTextField.toString(), password = passwordTextfield.toString())
             }
+
         }
 
         registerNowButton.setOnClickListener {
@@ -41,9 +43,12 @@ class MainActivity : AppCompatActivity() {
             this.finish()
         }
 
+        //get value from share preference
         val pref = applicationContext.getSharedPreferences("MyPref", 0)
         val username = pref.getString("username", "")//"No name defined" is the default value.
         val password = pref.getString("password", "") //0 is the default value.
+
+        //compare and check user name password
         if (!password.isEmpty() && password != null){
             val pwDecrypt = AESCrypt.decrypt(password)
             if (username != null && pwDecrypt != null){
@@ -64,18 +69,23 @@ class MainActivity : AppCompatActivity() {
         model_obj.username = username
         model_obj.password = password
 
+        //retrofit check sign in with api
         signinService.signIn(model_obj) .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { result ->
                             if (result["code"] == "200"){
+                                //share preference
                                 val pref = applicationContext.getSharedPreferences("MyPref", 0)
                                 val editor = pref.edit()
                                 val pwEncrypt = AESCrypt.encrypt(password)
+                                // input value to share pref
                                 editor.putString("username", username)
                                 editor.putString("password", pwEncrypt)
+                                //commit to add value to share preference
                                 editor.commit()
 
+                                //go to home
                                 val myIntent = Intent(this, HomeActivity::class.java)
                                 startActivity(myIntent)
                                 this.finish()
@@ -88,6 +98,7 @@ class MainActivity : AppCompatActivity() {
                         }
                 )
     }
+
 
     fun autoSignin(username: String, password: String){
         val signinService: SignInService = app.retrofit!!.create(SignInService::class.java)

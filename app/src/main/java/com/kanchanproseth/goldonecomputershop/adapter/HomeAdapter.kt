@@ -56,10 +56,8 @@ class HomeAdapter(internal var mContext: Context, data: MyData) : RecyclerView.A
 
 
         var result = response!!.categories
-
         (holder as CategoryCardViewHolder).category_name.text = result[listPosition].category_name
         holder.recyclerView.setHasFixedSize(true)
-
         holder.seeMoreBtn.setOnClickListener {
 
             val intent = Intent(context, SeeMoreActivity::class.java)
@@ -71,7 +69,7 @@ class HomeAdapter(internal var mContext: Context, data: MyData) : RecyclerView.A
         var mLayoutManager = LinearLayoutManager(mContext)
         holder.recyclerView.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
 
-        var mAdapter = productAdapter(mContext, result[listPosition]!!)
+        var mAdapter = productAdapter(mContext, result[listPosition]!!, listPosition)
         holder.recyclerView.adapter = mAdapter
 
 

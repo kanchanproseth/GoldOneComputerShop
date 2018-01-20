@@ -2,6 +2,7 @@ package com.kanchanproseth.goldonecomputershop.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,6 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.BitmapImageViewTarget
+import com.kanchanproseth.goldonecomputershop.Helper.ImageHelper
 import com.kanchanproseth.goldonecomputershop.R
 import com.kanchanproseth.goldonecomputershop.controller.BlogDetailsActivity
 import com.kanchanproseth.goldonecomputershop.model.BlogModel
@@ -56,15 +60,31 @@ class BlogAdapter(internal var mContext: Context, data: BlogModel) : RecyclerVie
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, listPosition: Int) {
 
         var result = response!!.Blogs
+        var imageuri = "http://10.0.2.2:80/GoldOneProductAPI/" + result[listPosition].image_uri
 
         (holder as CategoryCardViewHolder).blog_title.text = result[listPosition].blog_title
+
+        Glide.with(mContext)
+                .load(imageuri)
+                .asBitmap()
+                .into(object : BitmapImageViewTarget(holder.imageView) {
+                    override fun setResource(resource: Bitmap) {
+                        //Play with bitmap
+                        super.setResource(resource)
+                        val newBitmap = ImageHelper.getRoundedCornerBitmap(resource, 10)
+                        holder.imageView.setImageBitmap(newBitmap)
+                    }
+                })
 //        holder.imageView.setImageResource()
 
         holder.posted_date.text = result[listPosition].posted_date + " | " + result[listPosition].Author
         holder.desc.text = result[listPosition].short_desc
         holder.itemView.setOnClickListener {
             val intent = Intent(mContext, BlogDetailsActivity::class.java)
-
+            intent.putExtra("imageuri", imageuri)
+            intent.putExtra("date_author", result[listPosition].posted_date + " | " + result[listPosition].Author)
+            intent.putExtra("title", result[listPosition].blog_title)
+            intent.putExtra("long_desc", result[listPosition].long_desc)
             mContext.startActivity(intent)
         }
 

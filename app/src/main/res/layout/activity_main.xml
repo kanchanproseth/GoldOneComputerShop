@@ -4,69 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kanchanproseth.goldonecomputershop.controller.MainActivity"
-    android:background="@drawable/background_color">
-
-    <!--<ImageView-->
-        <!--android:id="@+id/imageView3"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginTop="16dp"-->
-        <!--android:src="@drawable/logo"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toTopOf="parent" />-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/imageView2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="150dp"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:src="@drawable/gold_one_group_photo"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintHorizontal_bias="0.0"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/imageView3" />-->
-
-    <!--<ImageView-->
-        <!--android:id="@+id/imageView4"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:src="@drawable/gold_one_service"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent" />-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/textView"-->
-        <!--android:layout_width="372dp"-->
-        <!--android:layout_height="123dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:text="Gold One Computer was established in December 2007.-->
-         <!--It was a small shop with only 2 operators which was selling second hand computer and spare part. After years of growing, now we are one of the best IT product supplier with 2 branch stores located in town center of Phnom Penh. We are also a main distributor for some of the top IT brands, with nationwide sales network.-->
-         <!--In here, we love new technology. By 2009, www.goldonecomputer.com went online, which is considered as the first website in the country which provided full price list of IT products. Sincerely,"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textSize="10dp"-->
-        <!--android:textAlignment="center"-->
-        <!--app:layout_constraintBottom_toTopOf="@+id/imageView4"-->
-        <!--app:layout_constraintLeft_toLeftOf="parent"-->
-        <!--app:layout_constraintRight_toRightOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/imageView2" />-->
+    android:background="@drawable/background_color"
+    tools:context="com.kanchanproseth.goldonecomputershop.controller.MainActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/login_wallpaper"
+        android:src="@drawable/msi_wallpaper"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="70dp" />
+        tools:layout_editor_absoluteY="63dp" />
 
     <EditText
         android:id="@+id/signInUsername"
@@ -74,55 +25,61 @@
         android:layout_height="50dp"
         android:layout_margin="10dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/register_edit_text"
         android:ems="10"
         android:hint="username"
         android:inputType="textPersonName"
         android:padding="10dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.71" />
 
     <EditText
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:layout_height="50dp"
         android:id="@+id/signInPassword"
         android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/register_edit_text"
         android:ems="10"
         android:hint="password"
+        android:inputType="textPassword"
+        android:padding="10dp"
         android:textColor="#fff"
         android:textColorHint="#fff"
-        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInUsername"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/signInUsername" />
 
     <Button
-        android:background="#1Dffffff"
         android:id="@+id/signInButton"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/register_edit_text"
+        android:fontFamily="sans-serif"
         android:text="Login"
         android:textColor="#fff"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/registerNowButton"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signInPassword" />
 
     <Button
-        android:background="#1Dffffff"
         android:id="@+id/registerNowButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/register_edit_text"
+        android:fontFamily="sans-serif"
         android:text="Register Now"
         android:textAllCaps="false"
         android:textColor="#fff"
@@ -135,12 +92,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
+        android:layout_width="249dp"
+        android:layout_height="73dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/signInUsername"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo" />
 
 

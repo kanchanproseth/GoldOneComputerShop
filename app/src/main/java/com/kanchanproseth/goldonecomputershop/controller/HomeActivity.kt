@@ -22,7 +22,8 @@ class HomeActivity : AppCompatActivity() {
 
     private var mTabLayout: TabLayout? = null
 
-    private val mTabsIcons = intArrayOf(R.drawable.ic_recents_selector, R.drawable.ic_favorite_selector, R.drawable.ic_place_selector)
+    //array tab icon image
+    private val mTabsIcons = intArrayOf(R.drawable.ic_home_selector, R.drawable.ic_blogger_selector, R.drawable.ic_aboutus_selector)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,12 +63,14 @@ class HomeActivity : AppCompatActivity() {
 
     private inner class MyPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
+        //page number
         val PAGE_COUNT = 3
 
+        //tab title array
         private val mTabsTitle = arrayOf("Home", "Blogs", "About Us")
 
         fun getTabView(position: Int): View {
-            // Given you have a custom layout in `res/layout/custom_tab.xml` with a TextView and ImageView
+            // set up tab icon image and title tab
             val view = LayoutInflater.from(this@HomeActivity).inflate(R.layout.custom_tab, null)
             val title = view.title as TextView
             title.text = mTabsTitle[position]
@@ -79,8 +82,8 @@ class HomeActivity : AppCompatActivity() {
         override fun getItem(pos: Int): Fragment? {
             when (pos) {
 
+            //calling to fragment to each page we select
                 0 -> return PageFragment.newInstance(1)
-
                 1 -> return PageFragment.newInstance(2)
                 2 -> return PageFragment.newInstance(3)
             }
@@ -88,10 +91,12 @@ class HomeActivity : AppCompatActivity() {
         }
 
         override fun getCount(): Int {
+            // page number
             return PAGE_COUNT
         }
 
         override fun getPageTitle(position: Int): CharSequence {
+            //page title
             return mTabsTitle[position]
         }
     }

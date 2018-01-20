@@ -3,53 +3,70 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <android.support.v7.widget.CardView
-        android:layout_margin="5dp"
         android:id="@+id/blog_card"
-        android:background="@drawable/background_color"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/background_color">
         <android.support.v7.widget.LinearLayoutCompat
-            android:background="@drawable/background_color"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_color">
             <ImageView
                 android:id="@+id/blog_image"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/button_see_more"
+                android:padding="5dp"
+                android:scaleType="fitXY"
                 android:src="@drawable/logo"/>
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
-                    android:layout_marginTop="5dp"
                     android:id="@+id/blog_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:text="Gold One's 10th Anniversary Promotion"
                     android:textColor="#ffffff"
-                    android:text="Gold One's 10th Anniversary Promotion"/>
+                    android:textStyle="bold" />
                 <TextView
-                    android:padding="5dp"
                     android:id="@+id/posted_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="italic"
-                    android:textColor="#ffffff"
-                    android:text="03/12/2017 | Chung Uong"
-                    android:textSize="10dp"/>
-                <TextView
                     android:padding="5dp"
+                    android:text="03/12/2017 | Chung Uong"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:textStyle="italic" />
+                <TextView
                     android:id="@+id/short_desc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="italic"
-                    android:textColor="#ffffff"
+                    android:padding="5dp"
                     android:text="In this special occasion, we are pleased to introduce a series of sale promotion, including a chance to win an iPhone X and a MSI GV62 7RC."
-                    android:textSize="10dp"/>
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:textStyle="italic" />
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:padding="5dp"
+                        android:text="Read More..."
+                        android:textColor="#DD2C00" />
+                </RelativeLayout>
             </LinearLayout>
+
         </android.support.v7.widget.LinearLayoutCompat>
     </android.support.v7.widget.CardView>
 

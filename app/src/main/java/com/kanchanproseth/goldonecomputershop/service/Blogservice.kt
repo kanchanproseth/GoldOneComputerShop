@@ -10,6 +10,6 @@ import retrofit.http.Headers
 
 interface Blogservice{
     @Headers("Content-Type: application/json")
-    @GET("/Blog")
+    @GET("/news")
     fun getAllBlogs(): rx.Observable<BlogModel>
 }

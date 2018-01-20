@@ -39,6 +39,20 @@ public class BottomNavigationBehavior<V extends View> extends VerticalScrollingB
         a.recycle();
     }
 
+    public static <V extends View> BottomNavigationBehavior<V> from(V view) {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (!(params instanceof CoordinatorLayout.LayoutParams)) {
+            throw new IllegalArgumentException("The view is not a child of CoordinatorLayout");
+        }
+        CoordinatorLayout.Behavior behavior = ((CoordinatorLayout.LayoutParams) params)
+                .getBehavior();
+        if (!(behavior instanceof BottomNavigationBehavior)) {
+            throw new IllegalArgumentException(
+                    "The view is not associated with ottomNavigationBehavior");
+        }
+        return (BottomNavigationBehavior<V>) behavior;
+    }
+
     @Override
     public boolean onLayoutChild(CoordinatorLayout parent, V child, int layoutDirection) {
         boolean layoutChild = super.onLayoutChild(parent, child, layoutDirection);
@@ -92,7 +106,6 @@ public class BottomNavigationBehavior<V extends View> extends VerticalScrollingB
         }
     }
 
-
     private void ensureOrCancelAnimator(V child) {
         if (mTranslationAnimator == null) {
             mTranslationAnimator = ViewCompat.animate(child);
@@ -107,20 +120,6 @@ public class BottomNavigationBehavior<V extends View> extends VerticalScrollingB
         if (mTabLayout != null) {
             mTabsHolder = mTabLayout.getChildAt(0);
         }
-    }
-
-    public static <V extends View> BottomNavigationBehavior<V> from(V view) {
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (!(params instanceof CoordinatorLayout.LayoutParams)) {
-            throw new IllegalArgumentException("The view is not a child of CoordinatorLayout");
-        }
-        CoordinatorLayout.Behavior behavior = ((CoordinatorLayout.LayoutParams) params)
-                .getBehavior();
-        if (!(behavior instanceof BottomNavigationBehavior)) {
-            throw new IllegalArgumentException(
-                    "The view is not associated with ottomNavigationBehavior");
-        }
-        return (BottomNavigationBehavior<V>) behavior;
     }
 
     public void setTabLayoutId(@IdRes int tabId) {

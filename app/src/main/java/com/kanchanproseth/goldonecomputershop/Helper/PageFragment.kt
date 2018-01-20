@@ -138,8 +138,10 @@ class PageFragment : Fragment() {
 
                 val gold_one_kampuchea_krom = LatLng(11.5676194, 104.9041716)
                 val gold_one_electronic = LatLng(11.5530783, 104.9130798)
+                val Norton = LatLng(11.5676193, 104.9041715)
                 googleMap!!.addMarker(MarkerOptions().position(gold_one_kampuchea_krom).title("Gold One kampuchea krom"))
                 googleMap.addMarker(MarkerOptions().position(gold_one_electronic).title("Gold One Electronic"))
+                googleMap.addMarker(MarkerOptions().position(Norton).title("Norton"))
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(gold_one_kampuchea_krom, 12F))
 
             }

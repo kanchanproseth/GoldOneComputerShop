@@ -1,7 +1,6 @@
 package com.kanchanproseth.goldonecomputershop.service
 
 import com.kanchanproseth.goldonecomputershop.model.User
-import retrofit.Retrofit
 import retrofit.http.Body
 import retrofit.http.Headers
 import retrofit.http.POST
